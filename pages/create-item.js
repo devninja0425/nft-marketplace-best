@@ -41,6 +41,7 @@ export default function CreateItem() {
       name, description, image: fileUrl
     })
     try {
+      console.log(data)
       const added = await client.add(data)
       const url = `https://ipfs.infura.io/ipfs/${added.path}`
       /* after file is uploaded to IPFS, pass the URL to save it on Polygon */
