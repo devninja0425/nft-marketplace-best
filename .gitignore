@@ -2,7 +2,7 @@
 
 .secret
 .infuraid
-config.js
+# config.js
 
 # dependencies
 /node_modules
