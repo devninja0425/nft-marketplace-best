@@ -12,4 +12,8 @@ contract MHToken is ERC20 {
     fallback () external payable {
         revert();
     }
+
+    receive () external payable {
+        revert();
+    }
 }
