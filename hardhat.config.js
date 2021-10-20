@@ -6,9 +6,9 @@ const fs = require('fs');
 module.exports = {
   defaultNetwork: "hardhat",
   networks: {
-    hardhat: {
-      chainId: 1337
-    },
+    // hardhat: {
+    //   chainId: 1337
+    // },
     /*
     mumbai: {
       // Infura
