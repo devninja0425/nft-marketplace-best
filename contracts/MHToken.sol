@@ -8,4 +8,8 @@ contract MHToken is ERC20 {
     constructor() ERC20("MHToken", "MHT") {
         _mint(msg.sender, 100000 * (10 ** 18));
     }
+
+    fallback () external payable {
+        revert();
+    }
 }
