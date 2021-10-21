@@ -4,9 +4,11 @@ import axios from 'axios'
 import Web3Modal from "web3modal"
 
 import {
+  // mhtaddress,
   nftaddress, nftmarketaddress, rpc_url
 } from '../config'
 
+// import MHT from '../artifacts/contracts/MHT.sol/MHT.json'
 import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
 import Market from '../artifacts/contracts/Market.sol/NFTMarket.json'
 
@@ -48,6 +50,10 @@ export default function Home() {
     const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
 
     const price = ethers.utils.parseUnits(nft.price.toString(), 'ether')
+
+    // const mhtcontract = new ethers.Contract(mhtaddress, MHT.abi, signer)
+    // mhtcontract.approve(nftmarketaddress, price)
+    // const transaction = await contract.createMarketSale(nftaddress, mhtaddress, nft.tokenId, {
     const transaction = await contract.createMarketSale(nftaddress, nft.tokenId, {
       value: price
     })
@@ -70,7 +76,7 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="p-4 bg-black">
-                  <p className="text-2xl mb-4 font-bold text-white">{nft.price} MHT</p>
+                  <p className="text-2xl mb-4 font-bold text-white">{nft.price} ETH</p>
                   <button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded" onClick={() => buyNft(nft)}>Buy</button>
                 </div>
               </div>
