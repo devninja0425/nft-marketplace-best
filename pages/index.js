@@ -9,6 +9,7 @@ import {
 } from '../config'
 
 import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
+import MHT from '../artifacts/contracts/MHT.sol/MHT.json'
 import Market from '../artifacts/contracts/Market.sol/NFTMarket.json'
 
 export default function Home() {
@@ -49,6 +50,8 @@ export default function Home() {
     const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
 
     const price = ethers.utils.parseUnits(nft.price.toString(), 'ether')
+    const mHT = new ethers.Contract(mhtaddress, MHT.abi, signer)
+    await mHT.approve(nftmarketaddress, price);
     const transaction = await contract.createMarketSale(nftaddress, mhtaddress, nft.tokenId, {
       value: price
     })
