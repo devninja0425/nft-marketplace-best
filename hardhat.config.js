@@ -9,23 +9,24 @@ module.exports = {
     // hardhat: {
     //   chainId: 1337
     // },
-    /*
     mumbai: {
       // Infura
-      url: `https://polygon-mumbai.infura.io/v3/${infuraId}`
-      url: "https://rpc-mumbai.matic.today",
+      url: `https://polygon-mumbai.infura.io/v3/${infuraId}`,
       accounts: [privateKey]
     },
     matic: {
       // Infura
-      // url: `https://polygon-mainnet.infura.io/v3/${infuraId}`,
-      url: "https://rpc-mainnet.maticvigil.com",
+      url: `https://polygon-mainnet.infura.io/v3/${infuraId}`,
       accounts: [privateKey]
-    }
-    */
+    },
 
     rinkeby: {
+      // Infura
       url: `https://rinkeby.infura.io/v3/${infuraId}`,
+      accounts: [privateKey]
+    },
+    bsctestnet:{
+      url:"https://data-seed-prebsc-1-s1.binance.org:8545",
       accounts: [privateKey]
     }
   },
