@@ -20,6 +20,7 @@ async function main() {
   let config = `
   export const nftmarketaddress = "${nftMarket.address}"
   export const nftaddress = "${nft.address}"
+  export const mhtaddress = "${mht.address}"
   `
 
   let data = JSON.stringify(config)

@@ -4,6 +4,7 @@ import axios from 'axios'
 import Web3Modal from "web3modal"
 
 import {
+  mhtaddress,
   nftaddress, nftmarketaddress
 } from '../config'
 
@@ -48,7 +49,7 @@ export default function Home() {
     const contract = new ethers.Contract(nftmarketaddress, Market.abi, signer)
 
     const price = ethers.utils.parseUnits(nft.price.toString(), 'ether')
-    const transaction = await contract.createMarketSale(nftaddress, nft.tokenId, {
+    const transaction = await contract.createMarketSale(nftaddress, mhtaddress, nft.tokenId, {
       value: price
     })
     await transaction.wait()
