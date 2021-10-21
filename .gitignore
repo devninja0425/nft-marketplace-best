@@ -2,7 +2,7 @@
 
 .secret
 .infuraid
-config.js
+# config.js
 
 # dependencies
 /node_modules
@@ -42,4 +42,4 @@ node_modules
 
 #Hardhat files
 cache
-artifacts
+# artifacts
