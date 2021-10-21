@@ -4,6 +4,7 @@ pragma solidity ^0.8.3;
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 import "hardhat/console.sol";
 
@@ -49,7 +50,6 @@ contract NFTMarket is ReentrancyGuard {
   /* Places an item for sale on the marketplace */
   function createMarketItem(
     address nftContract,
-    address mhtContract,
     uint256 tokenId,
     uint256 price
   ) public payable nonReentrant {
@@ -86,6 +86,7 @@ contract NFTMarket is ReentrancyGuard {
   /* Transfers ownership of the item, as well as funds between parties */
   function createMarketSale(
     address nftContract,
+    address mhtContract,
     uint256 itemId
     ) public payable nonReentrant {
     uint price = idToMarketItem[itemId].price;
