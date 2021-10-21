@@ -86,16 +86,16 @@ contract NFTMarket is ReentrancyGuard {
   /* Transfers ownership of the item, as well as funds between parties */
   function createMarketSale(
     address nftContract,
-    address mhtContract,
+    // address mhtContract,
     uint256 itemId
     ) public payable nonReentrant {
     uint price = idToMarketItem[itemId].price;
     uint tokenId = idToMarketItem[itemId].tokenId;
     require(msg.value == price, "Please submit the asking price in order to complete the purchase");
 
-    // idToMarketItem[itemId].seller.transfer(msg.value);
+    idToMarketItem[itemId].seller.transfer(msg.value);
     IERC721(nftContract).transferFrom(address(this), msg.sender, tokenId);
-    IERC20(mhtContract).transferFrom(msg.sender, idToMarketItem[itemId].seller, price);
+    // IERC20(mhtContract).transferFrom(msg.sender, idToMarketItem[itemId].seller, price);
 
     idToMarketItem[itemId].owner = payable(msg.sender);
     idToMarketItem[itemId].sold = true;

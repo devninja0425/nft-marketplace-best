@@ -12,15 +12,20 @@ async function main() {
   await nft.deployed();
   console.log("nft deployed to:", nft.address);
 
-  const MHT = await hre.ethers.getContractFactory("MHT");
-  const mht = await MHT.deploy();
-  await mht.deployed();
-  console.log("mhtoken deployed to:", mht.address);
+  // const MHT = await hre.ethers.getContractFactory("MHT");
+  // const mht = await MHT.deploy();
+  // await mht.deployed();
+  // console.log("mhtoken deployed to:", mht.address);
 
+  // let config = `
+  // export const nftmarketaddress = "${nftMarket.address}"
+  // export const nftaddress = "${nft.address}"
+  // export const mhtaddress = "${mht.address}"
+  // `
+  
   let config = `
   export const nftmarketaddress = "${nftMarket.address}"
   export const nftaddress = "${nft.address}"
-  export const mhtaddress = "${mht.address}"
   `
 
   let data = JSON.stringify(config)
