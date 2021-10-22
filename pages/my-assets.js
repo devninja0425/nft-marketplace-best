@@ -2,6 +2,7 @@ import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Web3Modal from "web3modal"
+import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 
 import {
   nftmarketaddress, nftaddress
@@ -45,23 +46,44 @@ export default function MyAssets() {
     setNfts(items)
     setLoadingState('loaded') 
   }
-  if (loadingState === 'loaded' && !nfts.length) return (<h1 className="py-10 px-20 text-3xl">No assets owned</h1>)
-  return (
-    <div className="flex justify-center">
-      <div className="p-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
-          {
-            nfts.map((nft, i) => (
-              <div key={i} className="border shadow rounded-xl overflow-hidden">
-                <img src={nft.image} className="rounded" />
-                <div className="p-4 bg-black">
-                  <p className="text-2xl font-bold text-white">Price - {nft.price} ETH</p>
-                </div>
-              </div>
-            ))
-          }
-        </div>
+
+  if (loadingState === 'loaded' && !nfts.length) return (
+    <section className="explore-area">
+      <div className="container">
+        <h1 className="px-20 py-10 text-3xl">No assets owned</h1>
       </div>
+    </section>
+  )
+  return (
+    <div>
+      {/* <Breadcrumb title="My assets" page="My assets owned" /> */}
+      <section className="explore-area">
+        <div className="container">
+          <div className="row items explore-items">
+              {nfts.map((nft, idx) => {
+                  return (
+                      <div key={idx} className="col-12 col-sm-6 col-lg-3 item explore-item" >
+                        <div className="card">
+                            <div className="image-over">
+                                <img className="card-img-top" src={nft.image} alt="" />
+                            </div>
+                            {/* Card Caption */}
+                            <div className="card-caption col-12 p-0">
+                                {/* Card Body */}
+                                <div className="card-body">
+                                    <div className="card-bottom d-flex justify-content-between">
+                                        <span>{nft.price} ETH</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                    );
+                })}
+          </div>
+        </div>
+      </section>
     </div>
+
   )
 }
