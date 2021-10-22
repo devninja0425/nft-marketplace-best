@@ -59,6 +59,12 @@ export default function MyAssets() {
       {/* <Breadcrumb title="My assets" page="My assets owned" /> */}
       <section className="explore-area">
         <div className="container">
+          {/* Intro */}
+          <div className="intro mt-5 mt-lg-5 mb-1 mb-lg-1">
+            <div className="intro-content">
+                <span>My digital assets</span>
+            </div>
+          </div>
           <div className="row items explore-items">
               {nfts.map((nft, idx) => {
                   return (

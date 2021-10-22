@@ -76,8 +76,19 @@ export default function Home() {
   return (
     <div>
       <Hero />
-      <section className="explore-area">
+      <section className="explore-area mt-0">
         <div className="container">
+          {/* Intro */}
+          <div className="row">
+            <div className="col-12">
+              <div className="intro mb-1 mb-lg-1">
+                {/* <div className="intro-content"> */}
+                    <span>Explore</span>
+                    <h3 class="mt-3 mb-0">Exclusive Digital Assets</h3>
+                {/* </div> */}
+              </div>
+            </div>
+          </div>
           <div className="row items">
               {nfts.map((nft, idx) => {
                   return (

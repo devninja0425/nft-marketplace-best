@@ -65,7 +65,7 @@ export default function CreatorDashboard() {
         <div className="container">
           <div>
             {/* Intro */}
-            <div className="intro mt-5 mt-lg-0 mb-4 mb-lg-5">
+            <div className="intro mb-1 mb-lg-1">
               <div className="intro-content">
                   <span>Items created</span>
               </div>
@@ -97,7 +97,7 @@ export default function CreatorDashboard() {
             {
               Boolean(sold.length) && (
                 <div>
-                  <div className="intro mt-5 mt-lg-0 mb-4 mb-lg-5">
+                  <div className="intro mb-1 mb-lg-1">
                     <div className="intro-content">
                         <span>Items sold</span>
                     </div>
