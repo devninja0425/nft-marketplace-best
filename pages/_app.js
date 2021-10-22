@@ -1,10 +1,53 @@
+import { useEffect, useState } from 'react'
+import Web3Modal from "web3modal"
+import { ethers } from 'ethers'
+import WalletConnectProvider from '@walletconnect/web3-provider'
+
 import '../styles/globals.css'
-// import Link from 'next/link'
-// import Header from '../components/Header/Header';
-// import Hero from '../components/Hero/Hero';
 import Footer from '../components/Footer/Footer';
 
+import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
+
+import {
+    // mhtaddress,
+    nftaddress
+} from '../config'
+
 function Marketplace({ Component, pageProps }) {
+  const [wallet, setWallet] = useState('Connect Wallet')
+
+    async function connectWallet() {
+        //  const providerOptions = {
+        //     /* See Provider Options Section */
+        //     metamask: {
+        //         id: "injected",
+        //         name: "MetaMask",
+        //         type: "injected",
+        //         check: "isMetaMask"
+        //     },
+        //     walletconnect: {
+        //         package: WalletConnectProvider,
+        //         options: {
+        //             // Mikko's test key - don't copy as your mileage may vary
+        //             infuraId: "8043bb2cf99347b1bfadfb233c5325c0",
+        //         }
+        //     },
+        // };
+
+        const web3Modal = new Web3Modal({
+            // network: "bsctestnet",
+            // providerOptions,
+            cacheProvider: false,
+        })
+        const connection = await web3Modal.connect()
+        const provider = new ethers.providers.Web3Provider(connection)
+        const signer = provider.getSigner()
+        const accountAddress = await signer.getAddress()
+
+        console.log("Account:", accountAddress)
+        setWallet(accountAddress)
+    }
+
   return (
     <div className="main">
       <header id="header">
@@ -40,7 +83,12 @@ function Marketplace({ Component, pageProps }) {
                         </a>
                     </li>
                 </ul>
-                
+                {/* Navbar Action Button */}
+                <ul className="navbar-nav action">
+                    <li className="nav-item ml-3">
+                        <button className="btn ml-lg-auto btn-bordered-white" id="wallet-address" onClick={connectWallet}><i className="icon-wallet mr-md-2" />{wallet}</button>
+                    </li>
+                </ul>
             </div>
         </nav>
       </header>
