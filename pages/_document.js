@@ -32,7 +32,7 @@ class MyDocument extends Document {
           <script src="/assets/js/vendor/countdown.min.js"></script>
           <script src="/assets/js/vendor/shuffle.min.js"></script>
 
-          {/* <script src="/assets/js/main.js"></script> */}
+          <script src="/assets/js/main.js"></script>
           
         </body>
       </Html>
