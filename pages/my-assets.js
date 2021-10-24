@@ -78,7 +78,7 @@ export default function MyAssets() {
                                 {/* Card Body */}
                                 <div className="card-body">
                                     <div className="card-bottom d-flex justify-content-between">
-                                        <span>{nft.price} ETH</span>
+                                        <span>{nft.price} BNB</span>
                                     </div>
                                 </div>
                             </div>
