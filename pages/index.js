@@ -67,11 +67,14 @@ export default function Home() {
 
   
   if (loadingState === 'loaded' && !nfts.length) return (
-    <section className="explore-area">
-      <div className="container">
-        <h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>
-      </div>
-    </section>
+    <div>
+      <Hero />
+      <section className="explore-area">
+        <div className="container">
+          <h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>
+        </div>
+      </section>
+    </div>
   )
   return (
     <div>
