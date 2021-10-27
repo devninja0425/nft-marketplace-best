@@ -116,11 +116,13 @@ export default function CreateItem() {
                                     </div>
                                 </div>
                             </div>
-                            {
-                              fileUrl && (
-                                <img className="rounded mt-4" width="350" src={fileUrl} />
-                              )
-                            }
+                            <div className="col-12">
+                              {
+                                fileUrl && (
+                                  <img className="rounded mt-4" width="350" src={fileUrl} />
+                                )
+                              }
+                            </div>
                             <div className="col-12">
                                 <button className="btn w-100 mt-3 mt-sm-4" type="button" onClick={createMarket}>Create Digital Asset</button>
                             </div>
