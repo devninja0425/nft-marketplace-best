@@ -22,13 +22,13 @@ class Hero extends Component {
             <section className="hero-section">
                 <div className="container">
                     <div className="row">
-                        <div className="col-12 col-md-12 col-lg-12">
+                        <div className="col-12 col-md-12 col-lg-8">
                             <span>{this.state.data.pre_heading}</span>
                             <h1 className="mt-4">{this.state.data.heading}</h1>
                             <p>{this.state.data.content}</p>
                             {/* Buttons */}
                             <div className="button-group">
-                                {/* <a className="btn btn-bordered-white" href="/"><i className="icon-rocket mr-2" />{this.state.data.btn_1}</a> */}
+                                <a className="btn btn-bordered-white" href="/"><i className="icon-rocket mr-2" />{this.state.data.btn_1}</a>
                                 <a className="btn btn-bordered-white" href="/create-item"><i className="icon-note mr-2" />{this.state.data.btn_2}</a>
                             </div>
                         </div>

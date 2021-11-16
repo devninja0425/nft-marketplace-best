@@ -284,8 +284,10 @@ p:last-child {
 
 h1 {
   margin-bottom: 1.5rem;
-  font-size: var(--h1-size);
-  font-weight: var(--h1-weight);
+  /* font-size: var(--h1-size);
+  font-weight: var(--h1-weight); */
+  font-size: 4rem !important;
+  font-weight: 900 !important;
   line-height: 1.2;
   font-family: var(--primary-font);
   color: var(--primary-color);
