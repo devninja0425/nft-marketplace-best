@@ -3,6 +3,7 @@ import { ethers } from 'ethers'
 import { create as ipfsHttpClient } from 'ipfs-http-client'
 import { useRouter } from 'next/router'
 import Web3Modal from 'web3modal'
+import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 
 const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0')
 
@@ -77,38 +78,60 @@ export default function CreateItem() {
   }
 
   return (
-    <div className="flex justify-center">
-      <div className="w-1/2 flex flex-col pb-12">
-        <input 
-          placeholder="Asset Name"
-          className="mt-8 border rounded p-4"
-          onChange={e => updateFormInput({ ...formInput, name: e.target.value })}
-        />
-        <textarea
-          placeholder="Asset Description"
-          className="mt-2 border rounded p-4"
-          onChange={e => updateFormInput({ ...formInput, description: e.target.value })}
-        />
-        <input
-          placeholder="Asset Price in ETH"
-          className="mt-2 border rounded p-4"
-          onChange={e => updateFormInput({ ...formInput, price: e.target.value })}
-        />
-        <input
-          type="file"
-          name="Asset"
-          className="my-4"
-          onChange={onChange}
-        />
-        {
-          fileUrl && (
-            <img className="rounded mt-4" width="350" src={fileUrl} />
-          )
-        }
-        <button onClick={createMarket} className="font-bold mt-4 bg-pink-500 text-white rounded p-4 shadow-lg">
-          Create Digital Asset
-        </button>
-      </div>
-    </div>
+    <div className="mt-5">
+      {/* <Breadcrumb title="My assets" page="My assets owned" /> */}
+      <section className="author-area">
+        <div className="container">
+            <div className="row justify-content-between">
+                <div className="col-12 col-md-7">
+                    {/* Intro */}
+                    <div className="intro mt-5 mt-lg-0 mb-4 mb-lg-5">
+                        <div className="intro-content">
+                            <span>Create Item</span>
+                        </div>
+                    </div>
+                    {/* Item Form */}
+                    <form className="item-form card no-hover">
+                        <div className="row">
+                            <div className="col-12">
+                                <div className="form-group mt-3">
+                                    <input type="text" className="form-control" placeholder="Asset Name" required="required" onChange={e => updateFormInput({ ...formInput, name: e.target.value })} />
+                                </div>
+                            </div>
+                            <div className="col-12">
+                                <div className="form-group">
+                                    <textarea className="form-control" placeholder="Asset Description" cols={30} rows={3} defaultValue={""} onChange={e => updateFormInput({ ...formInput, description: e.target.value })} />
+                                </div>
+                            </div>
+                            <div className="col-12 col-md-6">
+                                <div className="form-group">
+                                    <input type="text" className="form-control" placeholder="Asset Price" required="required" onChange={e => updateFormInput({ ...formInput, price: e.target.value })} />
+                                </div>
+                            </div>
+                            <div className="col-12">
+                                <div className="input-group form-group">
+                                    <div className="custom-file">
+                                        <input type="file" className="custom-file-input" id="inputGroupFile01" name="Asset" onChange={onChange}/>
+                                        <label className="custom-file-label" htmlFor="inputGroupFile01">Choose file</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-12">
+                              {
+                                fileUrl && (
+                                  <img className="rounded mt-4" width="350" src={fileUrl} />
+                                )
+                              }
+                            </div>
+                            <div className="col-12">
+                                <button className="btn w-100 mt-3 mt-sm-4" type="button" onClick={createMarket}>Create Digital Asset</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+      </section>
+    </div>    
   )
 }

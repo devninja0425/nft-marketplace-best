@@ -2,6 +2,7 @@ import { ethers } from 'ethers'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Web3Modal from "web3modal"
+import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 
 import {
   nftmarketaddress, nftaddress
@@ -50,45 +51,85 @@ export default function CreatorDashboard() {
     setNfts(items)
     setLoadingState('loaded') 
   }
-  if (loadingState === 'loaded' && !nfts.length) return (<h1 className="py-10 px-20 text-3xl">No assets created</h1>)
-  return (
-    <div>
-      <div className="p-4">
-        <h2 className="text-2xl py-2">Items Created</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
-          {
-            nfts.map((nft, i) => (
-              <div key={i} className="border shadow rounded-xl overflow-hidden">
-                <img src={nft.image} className="rounded" />
-                <div className="p-4 bg-black">
-                  <p className="text-2xl font-bold text-white">Price - {nft.price} ETH</p>
-                </div>
-              </div>
-            ))
-          }
-        </div>
+  if (loadingState === 'loaded' && !nfts.length) return (
+    <section className="explore-area">
+      <div className="container">
+        <h1 className="px-20 py-10 text-3xl">No assets created</h1>
       </div>
-        <div className="px-4">
-        {
-          Boolean(sold.length) && (
-            <div>
-              <h2 className="text-2xl py-2">Items sold</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
-                {
-                  sold.map((nft, i) => (
-                    <div key={i} className="border shadow rounded-xl overflow-hidden">
-                      <img src={nft.image} className="rounded" />
-                      <div className="p-4 bg-black">
-                        <p className="text-2xl font-bold text-white">Price - {nft.price} ETH</p>
-                      </div>
-                    </div>
-                  ))
-                }
+    </section>
+  )
+  return (
+    <div className="mt-5">
+      {/* <Breadcrumb title="Creator dashboard" page="My assets created" /> */}
+      <section className="explore-area">
+        <div className="container">
+          <div>
+            {/* Intro */}
+            <div className="intro mb-1 mb-lg-1">
+              <div className="intro-content">
+                  <span>Items created</span>
               </div>
             </div>
-          )
-        }
+            <div className="row items">
+              {nfts.map((nft, idx) => {
+                return (
+                  <div key={idx} className="col-12 col-sm-6 col-lg-3 item" >
+                    <div className="card">
+                        <div className="image-over">
+                            <img className="card-img-top" src={nft.image} alt="" />
+                        </div>
+                        {/* Card Caption */}
+                        <div className="card-caption col-12 p-0">
+                            {/* Card Body */}
+                            <div className="card-body">
+                                <div className="card-bottom d-flex justify-content-between">
+                                    <span>{nft.price} BNB</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="mt-5">
+            {
+              Boolean(sold.length) && (
+                <div>
+                  <div className="intro mb-1 mb-lg-1">
+                    <div className="intro-content">
+                        <span>Items sold</span>
+                    </div>
+                  </div>
+                  <div className="row items">
+                    {
+                      sold.map((nft, idx) => (
+                        <div key={idx} className="col-12 col-sm-6 col-lg-3 item" >
+                          <div className="card">
+                              <div className="image-over">
+                                  <img className="card-img-top" src={nft.image} alt="" />
+                              </div>
+                              {/* Card Caption */}
+                              <div className="card-caption col-12 p-0">
+                                  {/* Card Body */}
+                                  <div className="card-body">
+                                      <div className="card-bottom d-flex justify-content-between">
+                                          <span>{nft.price} BNB</span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                      ))
+                    }
+                  </div>
+                </div>
+              )
+            }
+          </div>
         </div>
+      </section>
     </div>
   )
 }

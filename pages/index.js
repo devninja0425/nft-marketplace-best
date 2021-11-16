@@ -3,6 +3,10 @@ import { useEffect, useState } from 'react'
 import axios from 'axios'
 import Web3Modal from "web3modal"
 
+import Hero from '../components/Hero/Hero';
+// import Auctions from '../components/Auctions/AuctionsOne';
+// import Explore from '../components/Explore/ExploreOne';
+
 import {
   // mhtaddress,
   nftaddress, nftmarketaddress, rpc_url
@@ -60,30 +64,64 @@ export default function Home() {
     await transaction.wait()
     loadNFTs()
   }
-  if (loadingState === 'loaded' && !nfts.length) return (<h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>)
-  return (
-    <div className="flex justify-center">
-      <div className="px-4" style={{ maxWidth: '1600px' }}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4">
-          {
-            nfts.map((nft, i) => (
-              <div key={i} className="border shadow rounded-xl overflow-hidden">
-                <img src={nft.image} />
-                <div className="p-4">
-                  <p style={{ height: '64px' }} className="text-2xl font-semibold">{nft.name}</p>
-                  <div style={{ height: '70px', overflow: 'hidden' }}>
-                    <p className="text-gray-400">{nft.description}</p>
-                  </div>
-                </div>
-                <div className="p-4 bg-black">
-                  <p className="text-2xl mb-4 font-bold text-white">{nft.price} ETH</p>
-                  <button className="w-full bg-pink-500 text-white font-bold py-2 px-12 rounded" onClick={() => buyNft(nft)}>Buy</button>
-                </div>
-              </div>
-            ))
-          }
+
+  
+  if (loadingState === 'loaded' && !nfts.length) return (
+    <div>
+      <Hero />
+      <section className="explore-area">
+        <div className="container">
+          <h1 className="px-20 py-10 text-3xl">No items in marketplace</h1>
         </div>
-      </div>
+      </section>
+    </div>
+  )
+  return (
+    <div>
+      <Hero />
+      <section className="explore-area mt-0">
+        <div className="container">
+          {/* Intro */}
+          <div className="intro mb-1 mb-lg-1">
+            <div className="intro-content">
+                <span>Explore</span>
+                <h3 class="mt-3 mb-0">Exclusive Digital Assets</h3>
+            </div>
+          </div>
+          <div className="row items">
+              {nfts.map((nft, idx) => {
+                  return (
+                      <div key={idx} className="col-12 col-sm-6 col-lg-3 item" >
+                            <div className="card">
+                                <div className="image-over">
+                                    <img className="card-img-top" src={nft.image} alt="" />
+                                </div>
+
+                                {/* Card Caption */}
+                                <div className="card-caption col-12 p-0">
+                                
+                                    {/* Card Body */}
+                                    <div className="card-body">
+                                        <h5 className="mb-0">{nft.name}</h5>
+                                        <div className="seller d-flex align-items-center my-3">
+                                            <span>Description</span>
+                                              <h6 className="ml-2 mb-0">{nft.description}</h6>
+                                        </div>
+                                
+                                        <div className="card-bottom d-flex justify-content-between">
+                                            <span>{nft.price} BNB</span>
+                                        </div>
+                                
+                                        <button className="btn btn-bordered-white btn-smaller mt-3" onClick={() => buyNft(nft)}><i className="icon-handbag mr-2" />Buy</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })}
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
