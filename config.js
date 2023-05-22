@@ -1,5 +1,5 @@
 
-  export const nftmarketaddress = "0xB1487D59f65dFEae8f32fF3d3B36BBfEDCBE9598"
-  export const nftaddress = "0xb14E0477E2Bb495df53EE11b01F74D9D3806Da3e"
+  export const nftmarketaddress = "0xE74c95975cd5f2C4AaDCd8a44D840D339E380637"
+  export const nftaddress = "0x7a7B1407578A4B8c909F79C31bf96BeFCe62E415"
   export const rpc_url = "https://data-seed-prebsc-1-s1.binance.org:8545"
   

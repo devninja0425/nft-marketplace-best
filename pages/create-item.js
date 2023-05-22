@@ -5,7 +5,8 @@ import { useRouter } from 'next/router'
 import Web3Modal from 'web3modal'
 import Breadcrumb from '../components/Breadcrumb/Breadcrumb';
 
-const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0')
+const ipfsUrl = 'https://ipfs.io/ipfs/';
+const client = ipfsHttpClient(ipfsUrl);
 
 import {
   nftaddress, nftmarketaddress
@@ -28,7 +29,7 @@ export default function CreateItem() {
           progress: (prog) => console.log(`received: ${prog}`)
         }
       )
-      const url = `https://ipfs.infura.io/ipfs/${added.path}`
+      const url = `${ipfsUrl}${added.path}`
       setFileUrl(url)
     } catch (error) {
       console.log('Error uploading file: ', error)
@@ -43,7 +44,7 @@ export default function CreateItem() {
     })
     try {
       const added = await client.add(data)
-      const url = `https://ipfs.infura.io/ipfs/${added.path}`
+      const url = ipfsUrl + added.path;
       /* after file is uploaded to IPFS, pass the URL to save it on Polygon */
       createSale(url)
     } catch (error) {
